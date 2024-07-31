@@ -1,4 +1,6 @@
 from tkinter import *
+
+import date_brain
 from date_brain import DateBrain
 from ui import UserInterface
 from roster import Roster
@@ -21,7 +23,8 @@ class AppController:
         self.current_line = self.db.current_line
         self.ui.update_line(self.current_line)
 
-    def search_for_date(self, date):
+    def search_for_date(self, date, name):
+        day_of_week = date_brain.get_day_of_week(date)
         return self.db.search_date(date)
 
     def start_app(self):

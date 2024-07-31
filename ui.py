@@ -102,14 +102,19 @@ class HomePage(Frame):
         self.entry_search = Entry(self.frame_middle)
         self.entry_search.insert(0, "dd/mm/yy")
         self.entry_search.pack(side="left", fill="both", expand=True)
-        button_search = Button(self.frame_middle, text="Search", command=self.search_button_clicked)
-        button_search.pack(side="left", fill="both", expand=True)
+        self.button_search = Button(self.frame_middle, text="Search", command=self.search_button_clicked)
+        self.button_search.pack(side="left", fill="both", expand=True)
 
         # Widgets middle bottom
 
         # Widgets bottom
         self.tree_saved = None
         self.display_recent_searches()
+
+        self.button_clear = Button(self.frame_bottom, text="Clear", width=20, command=self.clear_button_pressed)
+        self.button_clear.pack()
+
+        self.controller.window.bind('<Return>', self.on_enter_key)
 
     def display_recent_searches(self):
         # Check if the tree_saved already exists and destroy it if it does
@@ -136,9 +141,18 @@ class HomePage(Frame):
     def search_button_clicked(self):
         date = self.entry_search.get()
         name = self.entry_name.get()
-        self.df.add_to_search_dict(self.search_date(date), date, name)
+        self.search_date(date, name)
+        # self.df.add_to_search_dict(self.search_date(date), date, name)
         self.df.save_dict()
         self.display_recent_searches()
+
+    def clear_button_pressed(self):
+        self.df.previous_searches = {}
+        self.df.save_dict()
+        self.display_recent_searches()
+
+    def on_enter_key(self, event):
+        self.button_search.invoke()
 
 
 class ChangeLine(Frame):

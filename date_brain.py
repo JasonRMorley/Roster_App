@@ -10,15 +10,18 @@ def get_recent_sunday(date):
     return recent_sunday
 
 
-def get_weekday(date):
-    date_format = "%d-%m-%y"
-    date_obj = datetime.strptime(date, date_format)
-    weekday = date_obj.strftime("%A")
-    return weekday
+def get_day_of_week(date_string):
+    # Parse the date string into a datetime object
+    date_object = datetime.strptime(date_string, "%d/%m/%y")
+
+    # Get the day of the week
+    day_of_week = date_object.strftime("%A")
+
+    return day_of_week
 
 
-def format_date(date):
-    formatted_date = date.strftime("%d/%m/%y")
+def format_date(original_date):
+    formatted_date = original_date.strftime("%d/%m/%y")
     return formatted_date
 
 
@@ -28,8 +31,8 @@ def calculate_time_passed(start_date, end_date):
     return weeks_passed
 
 
-def string_to_date(date):
-    formatted_search = datetime.strptime(date, "%d/%m/%y").date()
+def string_to_date(date_string):
+    formatted_search = datetime.strptime(date_string, "%d/%m/%y").date()
     return formatted_search
 
 

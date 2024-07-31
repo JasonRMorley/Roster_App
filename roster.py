@@ -25,8 +25,9 @@ class Roster:
         return pd.DataFrame([previous_search], columns=self.roster_df.columns,
                             index=[line]) if previous_search != 'Line not found' else previous_search
 
-    def add_to_search_dict(self, line, date, name):
-        search = [date] + self.data_dict.get(str(line), 'Line not found')
+    def add_to_search_dict(self, line, date, name, day_of_week):
+
+        search = [date, day_of_week] + self.data_dict.get(str(line), 'Line not found')
 
         # If the line exists, save the search
         if search != 'Line not found':
