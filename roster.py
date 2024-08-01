@@ -40,11 +40,15 @@ class Roster:
             print("previous searches saved")
 
     def load_dict(self):
-        with open("previous_search.txt", "r") as file:
-            lines = file.readlines()
-            dict_load = {}
-            for line in lines:
-                line_dict = ast.literal_eval(line.strip())
-                dict_load.update(line_dict)
-            self.previous_searches = dict_load
-            print("previous searches loaded")
+        try:
+            with open("previous_search.txt", "r") as file:
+                lines = file.readlines()
+                dict_load = {}
+                for line in lines:
+                    line_dict = ast.literal_eval(line.strip())
+                    dict_load.update(line_dict)
+                self.previous_searches = dict_load
+                print("previous searches loaded")
+        except:
+            print("No previous searches to load")
+

@@ -4,13 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="98220558-f28b-46ff-a5ef-6be9e9939165" name="Changes" comment="01">
+    <list default="true" id="98220558-f28b-46ff-a5ef-6be9e9939165" name="Changes" comment="02">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catch/Stagecoach_roster_38.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/catch/users_info.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/date_brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/date_brain.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/previous_search.txt" beforeDir="false" afterPath="$PROJECT_DIR$/previous_search.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/previous_search.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/roster.py" beforeDir="false" afterPath="$PROJECT_DIR$/roster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/todo.py" beforeDir="false" afterPath="$PROJECT_DIR$/todo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +119,15 @@
       <option name="project" value="LOCAL" />
       <updated>1722431177527</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="02">
+      <option name="closed" value="true" />
+      <created>1722545416089</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1722545416089</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -134,6 +144,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial Commit" />
     <MESSAGE value="01" />
-    <option name="LAST_COMMIT_MESSAGE" value="01" />
+    <MESSAGE value="02" />
+    <option name="LAST_COMMIT_MESSAGE" value="02" />
   </component>
 </project>

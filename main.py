@@ -8,22 +8,24 @@ from roster import Roster
 
 class AppController:
     def __init__(self):
+        # date_brain handles everything date and line related
         self.db = DateBrain()
         self.db.load_current_line_and_week_date()
-
         self.current_line = self.db.current_line
         self.current_date = self.db.formatted_date
         self.search_line = None
 
+        # roster handles everything roster related
         self.roster = Roster("catch/Stagecoach_roster_38.csv")
         self.roster.load_dict()
+
         self.ui = None
 
     def set_change_line(self, new_line):
+        """when called from the ui, this method will change the users current_line"""
         self.db.set_line_number(new_line)
         self.db.save_current_line_and_week_date()
         self.current_line = self.db.current_line
-        self.ui.update_line(self.current_line)
 
     def search_for_date(self, date, name):
         """when called from the UI, this Method gets the date and name from the ui,
