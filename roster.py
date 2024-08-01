@@ -46,6 +46,5 @@ class Roster:
             for line in lines:
                 line_dict = ast.literal_eval(line.strip())
                 dict_load.update(line_dict)
-            print(dict_load)
             self.previous_searches = dict_load
             print("previous searches loaded")

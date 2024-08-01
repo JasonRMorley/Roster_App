@@ -49,7 +49,6 @@ class DateBrain:
 
     def set_line_number(self, new_line):
         self.current_line = new_line
-        print(self.current_line)
 
     def get_most_recent_sunday(self, date):
         if date.weekday() == 6:
@@ -70,7 +69,7 @@ class DateBrain:
         with open("catch/users_info.txt", "w") as file:
             file.write(f"Line: {self.current_line}\n")
             file.write(f"Week Date: {self.formatted_sunday}\n")
-        print("Data saved")
+        print("Line saved")
 
     def load_current_line_and_week_date(self):
         with open("catch/users_info.txt", "r") as file:
@@ -88,7 +87,13 @@ class DateBrain:
         weeks_passed = delta.days // 7
         self.current_line += weeks_passed
 
-    def search_date(self, date):
+    def get_search_line(self, date):
+        """
+         Takes the date as a sting, formats it into a date time date.
+         gets the most recent sunday.
+         finds out how many weeks has passed between current recent sunday and the recent sunday from the each day
+         adds the difference to the current line and stores that into the search line
+        """
         formatted_search = string_to_date(date)
         search_date = get_recent_sunday(formatted_search)
         current_sunday = self.recent_sunday

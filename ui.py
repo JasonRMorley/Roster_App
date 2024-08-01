@@ -1,11 +1,10 @@
 from tkinter import *
 from tkinter import messagebox
 from tkinter import ttk
-from roster import Roster
 
 
 class UserInterface:
-    def __init__(self, window, line, current_date, set_change_line, search_for_date):
+    def __init__(self, window, line, current_date, set_change_line, search_for_date, roster):
         self.window = window
         self.window.title("Check a date")
         self.window.config(padx=10, pady=10)
@@ -14,6 +13,7 @@ class UserInterface:
         self.set_change_line = set_change_line
         self.current_line = line
         self.current_date = current_date
+        self.roster = roster
 
         container = Frame(self.window)
         container.pack(fill="both", expand=True)
@@ -26,7 +26,7 @@ class UserInterface:
         for F in (HomePage, ChangeLine):
             page_name = F.__name__
             frame = F(parent=container, controller=self, line=self.current_line, date=self.current_date,
-                      search_date=self.search_date)
+                      search_date=self.search_date, roster=self.roster)
             self.frames[page_name] = frame
             frame.grid(row=0, column=0, sticky="nsew")
 
@@ -43,16 +43,15 @@ class UserInterface:
 
 
 class HomePage(Frame):
-    def __init__(self, parent, controller, line, date, search_date):
+    def __init__(self, parent, controller, line, date, search_date, roster):
         super().__init__(parent)
         self.controller = controller
         self.current_line = line
         self.current_date = date
         self.search_date = search_date
-        self.df = Roster("catch/Stagecoach_roster_38.csv")
-        self.df_current_line = self.df.get_current_week(self.current_line)
-        self.df_previous_searches = self.df.previous_searches
-        self.df.load_dict()
+
+        self.roster = roster
+        self.roster_current_week = self.roster.get_current_week(self.current_line)
 
         # Widget frames
         self.frame_top = Frame(self)
@@ -78,16 +77,16 @@ class HomePage(Frame):
 
         # Widgets middle top
         tree_current = ttk.Treeview(self.frame_middle_top, height=1)
-        tree_current["columns"] = list(self.df_current_line.columns)
+        tree_current["columns"] = list(self.roster.get_current_week(self.current_line).columns)
         tree_current["show"] = "headings"
 
         # Set the column headings
-        for column in self.df.get_current_week(self.current_line).columns:
+        for column in self.roster.get_current_week(self.current_line).columns:
             tree_current.heading(column, text=column)
             tree_current.column(column, width=70)
 
         # Insert the data into the Treeview
-        for index, row in self.df.get_current_week(self.current_line).iterrows():
+        for index, row in self.roster.get_current_week(self.current_line).iterrows():
             tree_current.insert("", "end", values=list(row))
 
         tree_current.pack()
@@ -117,12 +116,13 @@ class HomePage(Frame):
         self.controller.window.bind('<Return>', self.on_enter_key)
 
     def display_recent_searches(self):
+        print("display recent searches")
         # Check if the tree_saved already exists and destroy it if it does
         if self.tree_saved:
             self.tree_saved.destroy()
 
         self.tree_saved = ttk.Treeview(self.frame_middle_bottom)
-        self.tree_saved["columns"] = ['Name', 'Date', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
+        self.tree_saved["columns"] = ['Name', 'Date', 'Day', 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday',
                                       'Saturday']
         self.tree_saved["show"] = "headings"
 
@@ -131,8 +131,9 @@ class HomePage(Frame):
             self.tree_saved.column(col, width=100)
 
         self.tree_saved.pack(expand=True, fill='both')
+        print(self.roster.previous_searches)
 
-        for line, days in self.df.previous_searches.items():
+        for line, days in self.roster.previous_searches.items():
             self.tree_saved.insert("", "end", values=[line] + days)
 
     def update_line_label(self, new_line):
@@ -142,13 +143,11 @@ class HomePage(Frame):
         date = self.entry_search.get()
         name = self.entry_name.get()
         self.search_date(date, name)
-        # self.df.add_to_search_dict(self.search_date(date), date, name)
-        self.df.save_dict()
         self.display_recent_searches()
 
     def clear_button_pressed(self):
-        self.df.previous_searches = {}
-        self.df.save_dict()
+        self.roster.previous_searches = {}
+        self.roster.save_dict()
         self.display_recent_searches()
 
     def on_enter_key(self, event):
@@ -156,7 +155,7 @@ class HomePage(Frame):
 
 
 class ChangeLine(Frame):
-    def __init__(self, parent, controller, line, date, search_date):
+    def __init__(self, parent, controller, line, date, search_date, roster):
         super().__init__(parent)
         self.controller = controller
         self.current_line = line

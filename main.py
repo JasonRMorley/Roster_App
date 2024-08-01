@@ -13,8 +13,10 @@ class AppController:
 
         self.current_line = self.db.current_line
         self.current_date = self.db.formatted_date
+        self.search_line = None
 
         self.roster = Roster("catch/Stagecoach_roster_38.csv")
+        self.roster.load_dict()
         self.ui = None
 
     def set_change_line(self, new_line):
@@ -24,8 +26,13 @@ class AppController:
         self.ui.update_line(self.current_line)
 
     def search_for_date(self, date, name):
+        """when called from the UI, this Method gets the date and name from the ui,
+        gets the day of the week,
+        gets the search line and passes it all into a dictionary inside the roster"""
         day_of_week = date_brain.get_day_of_week(date)
-        return self.db.search_date(date)
+        self.search_line = self.db.get_search_line(date)
+        self.roster.add_to_search_dict(self.search_line, date, name, day_of_week)
+        self.roster.save_dict()
 
     def start_app(self):
         window = Tk()
@@ -35,6 +42,7 @@ class AppController:
             self.current_date,
             self.set_change_line,
             self.search_for_date,
+            self.roster,
         )
         window.mainloop()
 
