@@ -57,14 +57,14 @@ class DateBrain:
         self.current_line = new_line
 
     def save_current_line_and_week_date(self):
-        with open("catch/users_info.txt", "w") as file:
+        with open("../files/users_info.txt", "w") as file:
             file.write(f"Line: {self.current_line}\n")
             file.write(f"Week Date: {self.formatted_sunday}\n")
         print("Line saved")
 
     def load_current_line_and_week_date(self):
         try:
-            with open("catch/users_info.txt", "r") as file:
+            with open("../files/users_info.txt", "r") as file:
                 lines = file.readlines()
                 self.current_line = int(lines[0].strip().split(": ")[1])
                 week_date_str = lines[1].strip().split(": ")[1]

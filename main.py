@@ -1,9 +1,9 @@
 from tkinter import *
 
-import date_brain
-from date_brain import DateBrain
-from ui import UserInterface
-from roster import Roster
+from source import date_brain
+from source.date_brain import DateBrain
+from source.ui import UserInterface
+from source.roster import Roster
 
 
 class AppController:
@@ -16,7 +16,7 @@ class AppController:
         self.search_line = None
 
         # roster handles everything roster related
-        self.roster = Roster("catch/Stagecoach_roster_38.csv")
+        self.roster = Roster("files/Stagecoach_roster_38.csv")
         self.roster.load_dict()
 
         self.ui = None

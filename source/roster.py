@@ -35,13 +35,13 @@ class Roster:
             print(self.previous_searches)
 
     def save_dict(self):
-        with open("previous_search.txt", "w") as file:
+        with open("../files/previous_search.txt", "w") as file:
             file.write(str(self.previous_searches))
             print("previous searches saved")
 
     def load_dict(self):
         try:
-            with open("previous_search.txt", "r") as file:
+            with open("../files/previous_search.txt", "r") as file:
                 lines = file.readlines()
                 dict_load = {}
                 for line in lines:
