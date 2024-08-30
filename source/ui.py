@@ -92,6 +92,8 @@ class HomePage(Frame):
         tree_current.pack()
 
         # Widgets middle
+        self.label_name = Label(self.frame_middle, text="Event Name: ")
+        self.label_name.pack(side="left", fill="both", expand=False)
         self.entry_name = Entry(self.frame_middle)
         self.entry_name.pack(side="left", fill="both", expand=True)
 
