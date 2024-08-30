@@ -1,31 +1,30 @@
-Hello and welcome!
+Welcome to the Roster App!
+This app was created to help me plan my time better with friends and family. As a bus driver, my work schedule is chaotic and often leads to me making plans on days I’m supposed to be working. After disappointing my loved ones one too many times, I decided to develop an app that would help me stay on top of my schedule.
 
-Introduction
-This app was designed to help me in the making of plans with friends and family. My work roster is a big mess which has caused me to make plans on days i am working.
-After letting friends and familey down one too many times, i decided to make an app that makes sure i know when i am working and when i am not.
+The Problem
+As a bus driver, I receive a roster that outlines my work schedule for the entire year. At first glance, this seems helpful, but the system is frustratingly complex. Whenever a friend or family member asks if I'm free on a particular day, I face the tedious task of deciphering my availability.
 
-The problem
-As a bus driver i am given a roster that covers everyday of the year for every year to come until there are changes to the roster. Which sounds great at first unbtil you learn how 
-'Janky' the system is.
-I dread the times when a friend or family member asks me if im free on a perticular day. To find out if i am i first have to aquire my current line number.
-I then get the current date and count the number of weeks inbetween the current date and the date i want to check. I add the number of weeks to my current line number
-to get my target line number. I then find that line number on the long roster table to find the week line that contains the day i want to find.
-The roster will then state the duties i will be working that week starting from Sunday to Saturday. Not monday to sunday like a normal roster. This problem alone has tripped me up 
-more times than i care to mention.
+Here’s how it works:
 
-Say one week i will be on line 3801 so when i find this line number, i find my schedule for that week.
+Identify the Line Number: First, I need to find my current line number on the roster.
+Calculate the Target Week: Then, I count the number of weeks between today and the day in question. Adding this number to my current line number gives me the target line number.
+Locate the Week Line: With the target line number in hand, I have to look up the corresponding week on the roster, which lists my duties from Sunday to Saturday—not Monday to Sunday like most rosters.
+For example, if I’m on line 3801 for a particular week, my schedule might look something like this:
 
-Line, Sunnday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Total.
-3801, 4510,    528,    434,     443,       402,      RD,     RD,       paid time: 38.55
+Line	Sunday	Monday	Tuesday	Wednesday	Thursday	Friday	Saturday	Paid Time
+3801	4510	528	434	443	402	RD	RD	38.55 hrs
+Consulting the roster is the only way to know if I’m free on a specific day, but the process is cumbersome and prone to error.
 
-Consulting the roster is enough to tell a person if i am free on a perticular day or not. 
-So stage one of the app should be to simplify this process and remove the chances of human errors. Stage Two and Three could be bringing together more parts of the 'janky' schedule.
-Perhabs bring in the duties and runningboards into one place for ease of access.
+The App's Purpose
+Stage One of the app aims to simplify this process, minimizing the risk of human error. Stage Two and Three will focus on integrating other parts of this convoluted schedule, like duties and running boards, into a single, easy-to-access platform.
 
-To understand my schedule, there are several pieces to the puzzel:
-The roster, which is a long table that states which duties are for each day depending on your line number.
-The Duties board is a table much longer than the roster which tells you what bus routes you are doing at what times and what running boards you will be adheering to.
-The running boards tell you what 'variation' of the routes you are doing and what times you are doing them. including all of your timing points.
+Understanding the Schedule
+To fully grasp my schedule, I need to piece together several components:
 
-Each number in the 'day' columns is a duty. Once i know what duties i am working i have to consult the 'Duty' table to know what bus routes i will be driving and what running boards i will be adheering to.
-So i then have to check one of the four 'running board' binders to know what route 'variation' i will be driving and at what times.
+The Roster: A detailed table listing duties for each day, depending on my line number.
+The Duties Board: An even longer table that specifies which bus routes I’ll be driving, the timing, and the running boards to follow.
+The Running Boards: These outline the specific variations of routes I’ll be driving and include all the timing points.
+Each number in the day columns of the roster corresponds to a duty. Once I know my duties, I have to check the Duties Board to determine which bus routes I'll be driving and refer to one of the four running board binders to see the exact route variations and timing.
+
+This app is designed to bring all these pieces together, streamlining my ability to know when I’m working and when I’m free, so I can plan my life without the headache.
+
